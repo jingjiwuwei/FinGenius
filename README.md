@@ -188,6 +188,33 @@ python main.py 000001 --format json --output analysis_report.json
 - `--max-steps` - 每个智能体的最大步数（默认: 3）
 - `--debate-rounds` - Battle环境辩论轮数（默认: 2）
 
+## 数据融合工具
+
+FinGenius 还提供了**车辆数据融合工具**，用于合并来自不同数据源的Excel数据，特别适用于处理命名规范不一致的数据集。
+
+### 快速使用
+
+```bash
+# 使用模糊匹配合并两个Excel文件
+python examples/quick_fusion.py \
+    sales.xlsx \
+    config.xlsx \
+    output.xlsx \
+    --sales-keys 车型 品牌 厂商车系 \
+    --config-keys 车型名称 品牌名 车系 \
+    --threshold 0.7
+```
+
+### 主要特性
+
+- **🔍 模糊匹配**：基于字符串相似度算法的智能匹配
+- **🎯 精确匹配**：传统精确匹配，适用于标准化数据
+- **📊 多列支持**：支持多个关键列的组合匹配
+- **📈 质量评估**：提供匹配得分和详细统计信息
+- **📚 完整文档**：中英文双语使用指南
+
+详细使用说明请参见 [车辆数据融合指南](docs/vehicle_data_fusion_guide.md) 和 [示例代码](examples/)。
+
 ## 项目结构
 
 FinGenius 的系统架构以分层解耦与模块化协同为核心，通过明确的接口规范，构建了一个既健壮稳定又易于扩展的智能分析平台。
